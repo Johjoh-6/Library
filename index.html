@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+        <header id="header-sidebar">
+            <h1>Library</h1>
+            <div>
+                <p>Add your book</p>
+            </div>
+            <form id="form-book" action="" method="post">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title-book">
+                <span class="error"></span>
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author-book">
+                <span class="error"></span>
+                <label for="page">Pages</label>
+                <input type="number" name="page" id="page-book">
+                <span class="error"></span>
+                <label for="read">Read</label>
+                <input type="checkbox" name="read" id="read-book">
+                <input id="addBook" type="submit" value="submitted">
+            </form>
+        </header>
+        <section id="grid-book">
+            <div id="top-grid">
+                <p>Titre</p>
+                <p>Author</p>
+                <p>Page</p>
+                <p>Read</p>
+                <p>Delete</p>
+            </div>
+            <div class="body-grid">
+                <p>Jone</p>
+                <p>Jean michel</p>
+                <p>123</p>
+                <p class="read-or-not">read</p>
+                <p class="delete">delete</p>
+            </div>
+            <div class="body-grid">
+                <p>Jone</p>
+                <p>Jean michel</p>
+                <p>123</p>
+                <p class="read-or-not">read</p>
+                <p class="delete">delete</p>
+            </div>
+            <div class="body-grid">
+                <p>Jone</p>
+                <p>Jean michel</p>
+                <p>123</p>
+                <p class="read-or-not">read</p>
+                <p class="delete">delete</p>
+            </div>
+        </section>
+        <footer id="footer">
+            <div>johjoh-6 for The odin project</div>
+        </footer>
+    <script src="main.js"></script>
+</body>
+</html>
