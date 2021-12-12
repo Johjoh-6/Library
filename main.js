@@ -22,27 +22,35 @@ class book {
 function addBookToLibrary() {
     let newBook = new book;
     myLibrary.push(newBook);
+    returnLastId(myLibrary);
+    console.log(returnLastId(myLibrary));
+   bodyGrid(returnLastId(myLibrary)[0]);
+   form.reset();
     
 }
-
+function returnLastId(array) {
+    return array.slice(-1);
+}
 btnAdd.addEventListener('click', (e) =>{
     e.preventDefault();
     addBookToLibrary();
    
 })
 const topGrid = document.querySelector('#top-grid');
-function listBook(){
 for (let i = 0; i < myLibrary.length; i++) {
+   bodyGrid(myLibrary[i]);
+}
+function bodyGrid(index) {
     const divBody = document.createElement("div");
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
     const pPage = document.createElement("p");
     const divRead = document.createElement("div");
     const divDelete = document.createElement("div");
-    const title = myLibrary[i]['title'];
-    const author = myLibrary[i]['author'];
-    const page = myLibrary[i]['page'];
-    const read = myLibrary[i]['read'];
+    const title = index.title;
+    const author = index.author;
+    const page = index.page;
+    const read = index.read;
     let color;
     read ? color = "read-y" : color = "read-n";
     pTitle.innerText = title;
@@ -60,7 +68,6 @@ for (let i = 0; i < myLibrary.length; i++) {
     divBody.appendChild(divDelete);
     divBody.classList.add('body-grid');
     topGrid.insertAdjacentElement("afterend", divBody);
-}
 }
 // const readOrNot = document.querySelectorAll('.read-or-not');
 // readOrNot.addEventListener('click', (e)=>{
