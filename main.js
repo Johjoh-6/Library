@@ -37,8 +37,10 @@ btnAdd.addEventListener('click', (e) =>{
    
 })
 const topGrid = document.querySelector('#top-grid');
+function setGrid(){
 for (let i = 0; i < myLibrary.length; i++) {
    bodyGrid(myLibrary[i]);
+}
 }
 function bodyGrid(index) {
     const divBody = document.createElement("div");
@@ -68,8 +70,17 @@ function bodyGrid(index) {
     divBody.appendChild(divDelete);
     divBody.classList.add('body-grid');
     topGrid.insertAdjacentElement("afterend", divBody);
+
+
+divRead.addEventListener('click', ()=>{
+    color = !color;
+    color ? "read-y" : "read-n";
+})
+
+divDelete.addEventListener('click', ()=>{
+    myLibrary.pop();
+    setGrid();
+
+})
 }
-// const readOrNot = document.querySelectorAll('.read-or-not');
-// readOrNot.addEventListener('click', (e)=>{
-//     console.log(readOrNot);
-// })
+setGrid();
