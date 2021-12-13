@@ -1,6 +1,7 @@
 let myLibrary = [];
 const form = document.querySelector('#form-book');
 const btnAdd = document.querySelector('#addBook');
+const grid = document.querySelector('#list-book');
 console.log(myLibrary);
 console.log(myLibrary.length);
 
@@ -23,9 +24,8 @@ function addBookToLibrary() {
     let newBook = new book;
     myLibrary.push(newBook);
     returnLastId(myLibrary);
-    console.log(returnLastId(myLibrary));
-   bodyGrid(returnLastId(myLibrary)[0]);
-   form.reset();
+    bodyGrid(returnLastId(myLibrary)[0]);
+    form.reset();
     
 }
 function returnLastId(array) {
@@ -44,6 +44,7 @@ for (let i = 0; i < myLibrary.length; i++) {
 }
 function bodyGrid(index) {
     const divBody = document.createElement("div");
+    divBody.setAttribute('data-book-nb', myLibrary.indexOf(index));
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
     const pPage = document.createElement("p");
@@ -54,7 +55,13 @@ function bodyGrid(index) {
     const page = index.page;
     const read = index.read;
     let color;
-    read ? color = "read-y" : color = "read-n";
+    if(read===false) {
+        divRead.textContent = 'Not Read';
+        color = "read-n";
+    }else {
+        divRead.textContent = 'Read';
+        color = "read-y"
+    }
     pTitle.innerText = title;
     divBody.appendChild(pTitle);
     pAuthor.innerText = author;
@@ -63,24 +70,34 @@ function bodyGrid(index) {
     divBody.appendChild(pPage);
     divRead.classList.add('read-or-not');
     divRead.classList.add(color);
-    divRead.innerText = 'Read';
     divBody.appendChild(divRead);
     divDelete.classList.add('delete');
     divDelete.innerText = "Remove";
     divBody.appendChild(divDelete);
     divBody.classList.add('body-grid');
-    topGrid.insertAdjacentElement("afterend", divBody);
+    grid.insertAdjacentElement("beforeend", divBody);
 
-
+// change status of read
+// Might be better if toggle
 divRead.addEventListener('click', ()=>{
-    color = !color;
-    color ? "read-y" : "read-n";
+    index.read = !index.read;
+    resetGrid();
+    setGrid();
+    console.log(read);
 })
+// Remove the selected element
 
 divDelete.addEventListener('click', ()=>{
-    myLibrary.pop();
+    myLibrary.splice(myLibrary.indexOf(index),1);
+    resetGrid();
     setGrid();
 
 })
 }
+// Clear the grid list
+function resetGrid() {
+    grid.textContent= '';
+}
+
+// Call grid
 setGrid();
