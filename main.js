@@ -32,7 +32,7 @@ function returnLastId(array) {
     return array.slice(-1);
 }
 btnAdd.addEventListener('click', (e) =>{
-    e.preventDefault();
+    // e.preventDefault();
     addBookToLibrary();
    
 })
@@ -78,7 +78,7 @@ function bodyGrid(index) {
     grid.insertAdjacentElement("beforeend", divBody);
 
 // change status of read
-// Might be better if toggle
+// Might be better if
 divRead.addEventListener('click', ()=>{
     index.read = !index.read;
     resetGrid();
