@@ -23,12 +23,12 @@ class book {
 function addBookToLibrary() {
     let newBook = new book;
     myLibrary.push(newBook);
-    returnLastId(myLibrary);
-    bodyGrid(returnLastId(myLibrary)[0]);
+    returnLastObj(myLibrary);
+    bodyGrid(returnLastObj(myLibrary)[0]);
     form.reset();
     
 }
-function returnLastId(array) {
+function returnLastObj(array) {
     return array.slice(-1);
 }
 btnAdd.addEventListener('click', (e) =>{
